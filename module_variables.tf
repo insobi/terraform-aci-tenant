@@ -1,10 +1,13 @@
-variable "secret" {
-  type = map(any)
-  default = {
-    url  = ""
-    user = ""
-    pw   = ""
-  }
+variable "aci_url" {
+  type = string
+}
+
+variable "aci_user" {
+  type = string
+}
+
+variable "aci_pw" {
+  type      = string
   sensitive = true
 }
 
