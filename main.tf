@@ -8,13 +8,6 @@ terraform {
   required_version = ">=0.13.4"
 }
 
-provider "aci" {
-  username = var.aci_user
-  password = var.aci_pw
-  url      = var.aci_url
-  insecure = true
-}
-
 locals {
   tenant            = contains(keys(var.tenant), "tenant") ? var.tenant.tenant : {}
   vrfs              = contains(keys(var.tenant), "vrfs") ? var.tenant.vrfs : {}
