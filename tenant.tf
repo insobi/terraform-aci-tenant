@@ -80,21 +80,3 @@ resource "aci_epg_to_domain" "aci_epg_domain" {
   application_epg_dn = aci_application_epg.aci_epgs[each.value.name].id
   tdn                = local.aci_domain
 }
-
-resource "aci_epg_to_static_path" "aci_static_path_v1" {
-  for_each           = local.epg_static_paths
-  application_epg_dn = aci_application_epg.aci_epgs[each.value.epg].id
-  tdn                = each.value.tdn
-  encap              = each.value.encap
-  instr_imedcy       = contains(keys(each.value), "deployment_immediacy") ? each.value.deployment_immediacy : null
-  mode               = contains(keys(each.value), "mode") ? each.value.mode : null
-}
-
-resource "aci_epg_to_static_path" "aci_static_path_v2" {
-  for_each           = var.epg_static_paths
-  application_epg_dn = aci_application_epg.aci_epgs[each.value.epg].id
-  tdn                = each.value.tdn
-  encap              = each.value.encap
-  instr_imedcy       = contains(keys(each.value), "deployment_immediacy") ? each.value.deployment_immediacy : null
-  mode               = contains(keys(each.value), "mode") ? each.value.mode : null
-}

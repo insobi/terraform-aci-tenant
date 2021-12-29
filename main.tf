@@ -18,7 +18,6 @@ locals {
   filters           = contains(keys(var.tenant), "filters") ? var.tenant.filters : {}
   filter_entries    = contains(keys(var.tenant), "filter_entries") ? var.tenant.filter_entries : {}
   contracts         = contains(keys(var.tenant), "contracts") ? var.tenant.contracts : {}
-  epg_static_paths  = contains(keys(var.tenant), "epg_static_paths") ? var.tenant.epg_static_paths : {} # need to be exclusive from variable epg_static_paths
   contract_bindings = contains(keys(var.tenant), "contract_bindings") ? var.tenant.contract_bindings : {}
   aci_domain        = contains(keys(var.tenant), "aci_domain") ? var.tenant.aci_domain : null
 }
