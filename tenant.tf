@@ -1,5 +1,6 @@
 resource "aci_tenant" "aci_tenant" {
-  name = local.tenant.name
+  name        = local.tenant.name
+  description = contains(keys(var.tenant.tenant), "desc") ? var.tenant.tenant.desc : null
 }
 
 resource "aci_vrf" "aci_vrf" {
