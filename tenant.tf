@@ -16,6 +16,7 @@ resource "aci_bridge_domain" "aci_bds" {
   tenant_dn          = aci_tenant.aci_tenant.id
   name               = each.value.name
   relation_fv_rs_ctx = aci_vrf.aci_vrf[each.value.vrf].id
+  arp_flood          = contains(keys(each.value), "arp_flood") ? each.value.arp_flood : null
 }
 
 resource "aci_subnet" "aci_subnets" {
