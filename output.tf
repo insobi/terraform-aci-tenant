@@ -34,10 +34,6 @@ output "contract" {
   value = [for item in resource.aci_contract.aci_contracts : item.id]
 }
 
-output "contract_subject" {
-  value = [for item in resource.aci_contract_subject.aci_contract_subjects : item.id]
-}
-
 output "epg_contract" {
   value = [for item in aci_epg_to_contract.aci_epg_contract : item.id]
 }
