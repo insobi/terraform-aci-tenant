@@ -1,21 +1,34 @@
 # terraform-aci-tenant
 
-#### Example 1
+Manages ACI Tenant and children
+
+- Tenant
+- VRFs
+- Bridge domains and subnets
+- Application profiles
+- EPGs
+- Filter and Filter entries
+- Contracts
+- Contract bindings
+
+# How to use
+
+### Example 1
 
 ```
 module "aci_tenants" {
-  source  = "app.terraform.io/insekim/tenant/aci"
+  source  = "app.terraform.io/insobi/tenant/aci"
   version = "0.2.1"
 
   tenant_name = "tenant1"
 }
 ```
 
-#### Example 2
+### Example 2
 
 ```
 module "aci_tenants" {
-  source  = "app.terraform.io/insekim/tenant/aci"
+  source  = "app.terraform.io/insobi/tenant/aci"
   version = "0.2.1"
 
   tenant_name = "tenant2"
@@ -57,10 +70,10 @@ module "aci_tenants" {
 }
 ```
 
-#### Example 3
+### Example 3
 ```
 module "aci_tenants" {
-  source  = "app.terraform.io/insekim/tenant/aci"
+  source  = "app.terraform.io/insobi/tenant/aci"
   version = "0.2.1"
 
   tenant_name = "tenant3"
