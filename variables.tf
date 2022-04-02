@@ -1,4 +1,4 @@
-variable "tenant" {
+variable "tenant_name" {
   type        = string
   description = "The name of tenant"
 }
