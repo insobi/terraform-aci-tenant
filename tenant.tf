@@ -1,5 +1,5 @@
 resource "aci_tenant" "aci_tenant" {
-  name = var.tenant
+  name = var.tenant_name
 }
 
 resource "aci_vrf" "aci_vrf" {
