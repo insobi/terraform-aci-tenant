@@ -17,8 +17,8 @@ Manages ACI Tenant and children
 
 ```
 module "aci_tenants" {
-  source  = "app.terraform.io/insobi/tenant/aci"
-  version = "0.1.7"
+  source  = "insobi/tenant/aci"
+  version = "0.1.8"
 
   tenant_name = "tenant1"
 }
@@ -28,8 +28,8 @@ module "aci_tenants" {
 
 ```
 module "aci_tenants" {
-  source  = "app.terraform.io/insobi/tenant/aci"
-  version = "0.1.7"
+  source  = "insobi/tenant/aci"
+  version = "0.1.8"
 
   tenant_name = "tenant2"
 
@@ -73,8 +73,8 @@ module "aci_tenants" {
 ### Example 3
 ```
 module "aci_tenants" {
-  source  = "app.terraform.io/insobi/tenant/aci"
-  version = "0.1.7"
+  source  = "insobi/tenant/aci"
+  version = "0.1.8"
 
   tenant_name = "tenant3"
 
