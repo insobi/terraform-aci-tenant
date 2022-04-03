@@ -11,11 +11,11 @@ Manages ACI Tenant and children
 - Contracts
 - Contract bindings
 
-# How to use
+## How to use
 
 ### Example 1
 
-```
+```hcl
 module "aci_tenants" {
   source  = "insobi/tenant/aci"
   version = "0.1.8"
@@ -26,7 +26,7 @@ module "aci_tenants" {
 
 ### Example 2
 
-```
+```hcl
 module "aci_tenants" {
   source  = "insobi/tenant/aci"
   version = "0.1.8"
@@ -71,7 +71,7 @@ module "aci_tenants" {
 ```
 
 ### Example 3
-```
+```hcl
 module "aci_tenants" {
   source  = "insobi/tenant/aci"
   version = "0.1.8"
@@ -145,3 +145,63 @@ module "aci_tenants" {
   aci_domain = "uni/phys-TEST"
 }
 ```
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.4 |
+| <a name="requirement_aci"></a> [aci](#requirement\_aci) | >= 2.1.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_aci"></a> [aci](#provider\_aci) | >= 2.1.0 |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_tenant_name"></a> [tenant\_name](#input\_tenant\_name) | The name of ACI Tenant | `string` | n/a | yes |
+| <a name="input_vrfs"></a> [vrfs](#input\_vrfs) | VRFs | <pre>map(object({<br> name = string<br>}))</pre> | `{}` | no |
+| <a name="input_bridge_domains"></a> [bridge_domains](#input\_bridge_domains) | Bridge domains | <pre>map(object({<br> name = string,<br> vrf  = string<br>}))</pre> | `{}` | no |
+| <a name="input_subnets"></a> [subnets](#input\_subnets) | Subnets | <pre>map(object({<br> bd    = string,<br> ip    = string,<br> scope = list(string)<br>}))</pre> | `{}` | no |
+| <a name="input_app_profiles"></a> [app_profile](#input\_app_profiles) | Application profiles |  <pre>map(object({<br> name = string<br>}))</pre> | `{}` | no |
+| <a name="input_epgs"></a> [epgs](#input\_epgs) | EPGs |  <pre>map(object({<br> name   = string,<br> bdName = string,<br> apName = string<br>}))</pre> | `{}` | no |
+| <a name="input_filters"></a> [filters](#input\_filters) | Filters |  <pre>map(object({<br> name = string<br>}))</pre> | `{}` | no |
+| <a name="input_filter_entries"></a> [filter_entries](#input\_filter_entries) | Filter entries |  <pre>map(object({<br> name           = string,<br> filter_name    = string,<br> dest_from_port = string,<br> dest_to_port   = string,<br> ether_type     = string,<br> protocol       = string<br>}))</pre> | `{}` | no |
+| <a name="input_contracts"></a> [contracts](#input\_contracts) | Contracts |  <pre>map(object({<br> name   = string,<br> filter = list(string)<br>}))</pre> | `{}` | no |
+| <a name="input_contract_bindings"></a> [contract_bindings](#input\_contract_bindings) | Contract bindings |  <pre>map(object({<br> epg           = string,<br> contract_type = string,<br> contract      = string<br>}))</pre> | `{}` | no |
+| <a name="input_aci_domain"></a> [aci_domain](#input\_aci_domain) | ACI Domain | `string` | `null` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_tenant"></a> [tenant](#output\_tenant) | ID of Tenant |
+| <a name="output_vrf"></a> [vrf](#output\_vrf) | IDs of VRF |
+| <a name="output_bd"></a> [bd](#output\_bd) | IDs of Bridge domain |
+| <a name="output_subnet"></a> [subnet](#output\_subnet) | IDs of Subnet |
+| <a name="output_ap"></a> [ap](#output\_ap) | IDs of Application profiles  |
+| <a name="output_epg"></a> [epg](#output\_epg) | IDs of EPG |
+| <a name="output_filter"></a> [filter](#output\_filter) | IDs of Filter  |
+| <a name="output_entry"></a> [entry](#output\_entry) | IDs of Filter entry |
+| <a name="output_contract"></a> [contract](#output\_contract) | IDs of Contract |
+| <a name="output_epg_contract"></a> [epg_contract](#output\_epg_contract) | IDs of Contract binding |
+| <a name="output_domain"></a> [domain](#output\_domain) | IDs of ACI Domain |
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aci_tenant](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/tenant) | resource |
+| [aci_vrf](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/vrf) | resource |
+| [aci_bridge_domain](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/bridge_domain) | resource |
+| [aci_subnet](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/subnet) | resource |
+| [aci_application_profile](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/application_profile) | resource |
+| [aci_application_epg](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/application_epg) | resource |
+| [aci_filter](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/filter) | resource |
+| [aci_filter_entry](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/filter_entry) | resource |
+| [aci_contract](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/contract) | resource |
+| [aci_epg_to_contract](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/epg_to_contract) | resource |
+| [aci_epg_to_domain](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/epg_to_domain) | resource |
