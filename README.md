@@ -18,7 +18,7 @@ Manages ACI Tenant and children
 ```hcl
 module "aci_tenants" {
   source  = "insobi/tenant/aci"
-  version = "0.1.8"
+  version = "0.1.9"
 
   tenant_name = "tenant1"
 }
@@ -29,7 +29,7 @@ module "aci_tenants" {
 ```hcl
 module "aci_tenants" {
   source  = "insobi/tenant/aci"
-  version = "0.1.8"
+  version = "0.1.9"
 
   tenant_name = "tenant2"
 
@@ -74,7 +74,7 @@ module "aci_tenants" {
 ```hcl
 module "aci_tenants" {
   source  = "insobi/tenant/aci"
-  version = "0.1.8"
+  version = "0.1.9"
 
   tenant_name = "tenant3"
 
