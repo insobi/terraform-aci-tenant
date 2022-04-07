@@ -1,6 +1,6 @@
-variable "tenant_name" {
-  type        = string
-  description = "The name of tenant"
+variable "tenant" {
+  type        = map(any)
+  description = "A tenant"
 }
 
 variable "vrfs" {
