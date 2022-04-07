@@ -169,7 +169,7 @@ module "aci_tenants" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_tenant"></a> [tenant\_name](#input\_tenant) | ACI Tenant | <pre>map(object({<br> name        = string,<br> description = optional(string)<br>}))</pre> | n/a | yes |
+| <a name="input_tenant"></a> [tenant](#input\_tenant) | ACI Tenant | <pre>map(object({<br> name        = string,<br> description = optional(string)<br>}))</pre> | n/a | yes |
 | <a name="input_vrfs"></a> [vrfs](#input\_vrfs) | VRFs | <pre>map(object({<br> name = string<br>}))</pre> | `{}` | no |
 | <a name="input_bridge_domains"></a> [bridge_domains](#input\_bridge_domains) | Bridge domains | <pre>map(object({<br> name = string,<br> vrf  = string<br>}))</pre> | `{}` | no |
 | <a name="input_subnets"></a> [subnets](#input\_subnets) | Subnets | <pre>map(object({<br> bd    = string,<br> ip    = string,<br> scope = list(string)<br>}))</pre> | `{}` | no |
