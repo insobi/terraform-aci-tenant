@@ -18,9 +18,11 @@ Manages ACI Tenant and children
 ```hcl
 module "aci_tenants" {
   source  = "insobi/tenant/aci"
-  version = "0.2.1"
+  version = "0.3.0"
 
-  tenant_name = "tenant1"
+  tenant = {
+    name = "tenant1"
+  }
 }
 ```
 
@@ -29,9 +31,12 @@ module "aci_tenants" {
 ```hcl
 module "aci_tenants" {
   source  = "insobi/tenant/aci"
-  version = "0.2.1"
+  version = "0.3.0"
 
-  tenant_name = "tenant2"
+  tenant = {
+    name        = "tenant2",
+    description = "TEST"          # optional
+  }
 
   vrfs = {
     vrf0 = { 
@@ -74,9 +79,11 @@ module "aci_tenants" {
 ```hcl
 module "aci_tenants" {
   source  = "insobi/tenant/aci"
-  version = "0.2.1"
+  version = "0.3.0"
 
-  tenant_name = "tenant3"
+  tenant = {
+    name = "tenant3"
+  }
 
   vrfs = {
     vrf0 = { name = "TEST1-VRF" },
@@ -162,7 +169,7 @@ module "aci_tenants" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_tenant_name"></a> [tenant\_name](#input\_tenant\_name) | The name of ACI Tenant | `string` | n/a | yes |
+| <a name="input_tenant"></a> [tenant\_name](#input\_tenant) | ACI Tenant | <pre>map(object({<br> name        = string,<br> description = optional(string)<br>}))</pre> | n/a | yes |
 | <a name="input_vrfs"></a> [vrfs](#input\_vrfs) | VRFs | <pre>map(object({<br> name = string<br>}))</pre> | `{}` | no |
 | <a name="input_bridge_domains"></a> [bridge_domains](#input\_bridge_domains) | Bridge domains | <pre>map(object({<br> name = string,<br> vrf  = string<br>}))</pre> | `{}` | no |
 | <a name="input_subnets"></a> [subnets](#input\_subnets) | Subnets | <pre>map(object({<br> bd    = string,<br> ip    = string,<br> scope = list(string)<br>}))</pre> | `{}` | no |
