@@ -73,5 +73,5 @@ resource "aci_epg_to_contract" "aci_epg_contract" {
 resource "aci_epg_to_domain" "aci_epg_domain" {
   for_each           = var.epgs
   application_epg_dn = element([for item in aci_application_epg.aci_epgs : item.id if item.name == each.value.name], 0)
-  tdn                = var.aci_domain
+  tdn                = each.value.aciDomain
 }

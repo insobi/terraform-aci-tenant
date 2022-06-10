@@ -67,9 +67,10 @@ module "aci_tenants" {
 
   epgs = {
     epg1 = { 
-        name = "TEST1-EPG", 
-        bdName = "TEST1-BD", 
-        apName = "TEST-AP" 
+        name      = "TEST1-EPG", 
+        bdName    = "TEST1-BD", 
+        apName    = "TEST-AP",
+        aciDomain = "uni/phys-TEST" 
     }
   }
 }
@@ -109,11 +110,11 @@ module "aci_tenants" {
   }
 
   epgs = {
-    epg1 = { name = "TEST1-EPG", bdName = "TEST1-BD", apName = "TEST-AP" },
-    epg2 = { name = "TEST2-EPG", bdName = "TEST2-BD", apName = "TEST-AP" },
-    epg3 = { name = "TEST3-EPG", bdName = "TEST3-BD", apName = "TEST-AP" },
-    epg4 = { name = "TEST4-EPG", bdName = "TEST4-BD", apName = "TEST-AP" },
-    epg5 = { name = "TEST5-EPG", bdName = "TEST4-BD", apName = "TEST-AP" }
+    epg1 = { name = "TEST1-EPG", bdName = "TEST1-BD", apName = "TEST-AP", aciDomain = "uni/phys-TEST" },
+    epg2 = { name = "TEST2-EPG", bdName = "TEST2-BD", apName = "TEST-AP", aciDomain = "uni/phys-TEST" },
+    epg3 = { name = "TEST3-EPG", bdName = "TEST3-BD", apName = "TEST-AP", aciDomain = "uni/phys-TEST" },
+    epg4 = { name = "TEST4-EPG", bdName = "TEST4-BD", apName = "TEST-AP", aciDomain = "uni/phys-TEST" },
+    epg5 = { name = "TEST5-EPG", bdName = "TEST4-BD", apName = "TEST-AP", aciDomain = "uni/phys-TEST" }
   }
 
   filters = {
@@ -174,7 +175,7 @@ module "aci_tenants" {
 | <a name="input_bridge_domains"></a> [bridge_domains](#input\_bridge_domains) | Bridge domains | <pre>map(object({<br> name = string,<br> vrf  = string<br>}))</pre> | `{}` | no |
 | <a name="input_subnets"></a> [subnets](#input\_subnets) | Subnets | <pre>map(object({<br> bd    = string,<br> ip    = string,<br> scope = list(string)<br>}))</pre> | `{}` | no |
 | <a name="input_app_profiles"></a> [app_profile](#input\_app_profiles) | Application profiles |  <pre>map(object({<br> name = string<br>}))</pre> | `{}` | no |
-| <a name="input_epgs"></a> [epgs](#input\_epgs) | EPGs |  <pre>map(object({<br> name   = string,<br> bdName = string,<br> apName = string<br>}))</pre> | `{}` | no |
+| <a name="input_epgs"></a> [epgs](#input\_epgs) | EPGs |  <pre>map(object({<br> name      = string,<br> bdName    = string,<br> apName    = string,<br> aciDomain = string<br>}))</pre> | `{}` | no |
 | <a name="input_filters"></a> [filters](#input\_filters) | Filters |  <pre>map(object({<br> name = string<br>}))</pre> | `{}` | no |
 | <a name="input_filter_entries"></a> [filter_entries](#input\_filter_entries) | Filter entries |  <pre>map(object({<br> name           = string,<br> filter_name    = string,<br> dest_from_port = string,<br> dest_to_port   = string,<br> ether_type     = string,<br> protocol       = string<br>}))</pre> | `{}` | no |
 | <a name="input_contracts"></a> [contracts](#input\_contracts) | Contracts |  <pre>map(object({<br> name   = string,<br> filter = list(string)<br>}))</pre> | `{}` | no |
