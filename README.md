@@ -149,8 +149,6 @@ module "aci_tenants" {
     test4-epg-cons1 = { epg = "TEST4-EPG", contract_type = "consumer", contract = "any" },
     test5-epg-cons1 = { epg = "TEST5-EPG", contract_type = "consumer", contract = "any" }
   }
-
-  aci_domain = "uni/phys-TEST"
 }
 ```
 ## Requirements
@@ -180,7 +178,6 @@ module "aci_tenants" {
 | <a name="input_filter_entries"></a> [filter_entries](#input\_filter_entries) | Filter entries |  <pre>map(object({<br> name           = string,<br> filter_name    = string,<br> dest_from_port = string,<br> dest_to_port   = string,<br> ether_type     = string,<br> protocol       = string<br>}))</pre> | `{}` | no |
 | <a name="input_contracts"></a> [contracts](#input\_contracts) | Contracts |  <pre>map(object({<br> name   = string,<br> filter = list(string)<br>}))</pre> | `{}` | no |
 | <a name="input_contract_bindings"></a> [contract_bindings](#input\_contract_bindings) | Contract bindings |  <pre>map(object({<br> epg           = string,<br> contract_type = string,<br> contract      = string<br>}))</pre> | `{}` | no |
-| <a name="input_aci_domain"></a> [aci_domain](#input\_aci_domain) | ACI Domain | `string` | `null` | no |
 
 ## Outputs
 

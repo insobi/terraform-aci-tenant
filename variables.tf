@@ -56,9 +56,3 @@ variable "contract_bindings" {
   description = "Contract bindings"
   default     = {}
 }
-
-variable "aci_domain" {
-  type        = string
-  description = "Domain"
-  default     = null
-}
