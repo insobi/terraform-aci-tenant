@@ -1,19 +1,27 @@
 # terraform-aci-tenant
 
-Manages ACI Tenant and children
+ACI module for Managing ACI Tenant and child components
 
-- Tenant
-- VRFs
-- Bridge domains and subnets
-- Application profiles
-- EPGs
-- Filter and Filter entries
-- Contracts
-- Contract bindings
+```
+Tenant
+  ├── VRFs
+  ├── Bridge domains and subnets
+  ├── Application profiles
+  ├── EPGs
+  ├── Contracts
+  ├── Filter and Filter entries
+  └── Contract bindings
+```
 
-## How to use
+## Installation
+
+When executing terraform init, the module will install automatically.
+
+## Usage
 
 ### Example 1
+
+Single tenant deployment
 
 ```hcl
 module "aci_tenants" {
@@ -26,6 +34,8 @@ module "aci_tenants" {
 ```
 
 ### Example 2
+
+Single tenant deployment with its children
 
 ```hcl
 module "aci_tenants" {
@@ -74,7 +84,8 @@ module "aci_tenants" {
 }
 ```
 
-### Example 3
+or 
+
 ```hcl
 module "aci_tenants" {
   source  = "insobi/tenant/aci"
@@ -148,12 +159,55 @@ module "aci_tenants" {
   }
 }
 ```
+
+### Example 3
+
+Multiple tenants deployment using variable
+
+```hcl
+module "aci_tenants" {
+  source            = "insobi/tenant/aci"
+  
+  for_each          = var.tenants
+  tenant            = each.value.tenant
+  vrfs              = contains(keys(each.value), "vrfs") ? each.value.vrfs : {}
+  bridge_domains    = contains(keys(each.value), "bridge_domains") ? each.value.bridge_domains : {}
+  subnets           = contains(keys(each.value), "subnets") ? each.value.subnets : {}
+  app_profiles      = contains(keys(each.value), "app_profiles") ? each.value.app_profiles : {}
+  epgs              = contains(keys(each.value), "epgs") ? each.value.epgs : {}
+  aci_domain        = contains(keys(each.value), "aci_domain") ? each.value.aci_domain : null
+  filters           = contains(keys(each.value), "filters") ? each.value.filters : {}
+  filter_entries    = contains(keys(each.value), "filter_entries") ? each.value.filter_entries : {}
+  contracts         = contains(keys(each.value), "contracts") ? each.value.contracts : {}
+  contract_bindings = contains(keys(each.value), "contract_bindings") ? each.value.contract_bindings : {}
+}
+```
+
+Example of variable
+```
+tenants = {
+
+  tn1 = {
+    tenant = { name = "Tenant1" }
+    vrfs = { ... }
+    ... 
+  }
+
+  tn2 = {
+    tenant = { name : "Tenant2" }
+    ...
+  }
+
+  ...
+}
+```
+
 ## Requirements
 
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.4 |
-| <a name="requirement_aci"></a> [aci](#requirement\_aci) | >= 2.1.0 |
+| <a name="requirement_aci"></a> [aci](#requirement\_aci) | >= 4.1 |
 
 ## Providers
 
