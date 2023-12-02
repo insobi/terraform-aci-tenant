@@ -28,69 +28,6 @@ module "aci_tenants" {
   source  = "insobi/tenant/aci"
 
   tenant = {
-    name = "tenant1"
-  }
-}
-```
-
-### Example 2
-
-Single tenant deployment with its children
-
-```hcl
-module "aci_tenants" {
-  source  = "insobi/tenant/aci"
-
-  tenant = {
-    name        = "tenant2",
-    description = "TEST"          # optional
-  }
-
-  vrfs = {
-    vrf0 = { 
-        name = "TEST1-VRF" 
-    }
-  }
-
-  bridge_domains = {
-    bd1 = { 
-        name = "TEST1-BD", 
-        vrf = "TEST1-VRF"
-    }
-  }
-
-  subnets = {
-    subn1 = { 
-        bd = "TEST1-BD", 
-        ip = "10.225.3.1/24", 
-        scope = ["public"] 
-    }
-  }
-
-  app_profiles = {
-    ap1 = { 
-        name = "TEST-AP" 
-    }
-  }
-
-  epgs = {
-    epg1 = { 
-        name      = "TEST1-EPG", 
-        bd    = "TEST1-BD", 
-        ap    = "TEST-AP",
-        domain = "uni/phys-TEST" 
-    }
-  }
-}
-```
-
-or 
-
-```hcl
-module "aci_tenants" {
-  source  = "insobi/tenant/aci"
-
-  tenant = {
     name = "tenant3"
   }
 
@@ -160,9 +97,9 @@ module "aci_tenants" {
 }
 ```
 
-### Example 3
+### Example 2
 
-Multiple tenants deployment using variable
+Multiple tenants deployment
 
 ```hcl
 module "aci_tenants" {
@@ -184,6 +121,7 @@ module "aci_tenants" {
 ```
 
 Example of variable
+
 ```
 tenants = {
 
@@ -195,6 +133,7 @@ tenants = {
 
   tn2 = {
     tenant = { name : "Tenant2" }
+    vrfs = { ... }
     ...
   }
 
