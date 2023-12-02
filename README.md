@@ -1,6 +1,6 @@
 # terraform-aci-tenant
 
-ACI module for Managing ACI Tenant and child components
+Terraform module for deploying Cisco ACI tenants
 
 ```
 Tenant
