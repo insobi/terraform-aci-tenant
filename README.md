@@ -76,9 +76,9 @@ module "aci_tenants" {
   epgs = {
     epg1 = { 
         name      = "TEST1-EPG", 
-        bdName    = "TEST1-BD", 
-        apName    = "TEST-AP",
-        aciDomain = "uni/phys-TEST" 
+        bd    = "TEST1-BD", 
+        ap    = "TEST-AP",
+        domain = "uni/phys-TEST" 
     }
   }
 }
@@ -118,11 +118,11 @@ module "aci_tenants" {
   }
 
   epgs = {
-    epg1 = { name = "TEST1-EPG", bdName = "TEST1-BD", apName = "TEST-AP", aciDomain = "uni/phys-TEST" },
-    epg2 = { name = "TEST2-EPG", bdName = "TEST2-BD", apName = "TEST-AP", aciDomain = "uni/phys-TEST" },
-    epg3 = { name = "TEST3-EPG", bdName = "TEST3-BD", apName = "TEST-AP", aciDomain = "uni/phys-TEST" },
-    epg4 = { name = "TEST4-EPG", bdName = "TEST4-BD", apName = "TEST-AP", aciDomain = "uni/phys-TEST" },
-    epg5 = { name = "TEST5-EPG", bdName = "TEST4-BD", apName = "TEST-AP", aciDomain = "uni/phys-TEST" }
+    epg1 = { name = "TEST1-EPG", bd = "TEST1-BD", ap = "TEST-AP", domain = "uni/phys-TEST" },
+    epg2 = { name = "TEST2-EPG", bd = "TEST2-BD", ap = "TEST-AP", domain = "uni/phys-TEST" },
+    epg3 = { name = "TEST3-EPG", bd = "TEST3-BD", ap = "TEST-AP", domain = "uni/phys-TEST" },
+    epg4 = { name = "TEST4-EPG", bd = "TEST4-BD", ap = "TEST-AP", domain = "uni/phys-TEST" },
+    epg5 = { name = "TEST5-EPG", bd = "TEST4-BD", ap = "TEST-AP", domain = "uni/phys-TEST" }
   }
 
   filters = {
