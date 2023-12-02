@@ -36,9 +36,9 @@ resource "aci_application_profile" "aci_app_profile" {
 
 resource "aci_application_epg" "aci_epgs" {
   for_each               = var.epgs
-  application_profile_dn = element([for item in aci_application_profile.aci_app_profile : item.id if item.name == each.value.apName], 0)
+  application_profile_dn = element([for item in aci_application_profile.aci_app_profile : item.id if item.name == each.value.ap], 0)
   name                   = each.value.name
-  relation_fv_rs_bd      = element([for item in aci_bridge_domain.aci_bds : item.id if item.name == each.value.bdName], 0)
+  relation_fv_rs_bd      = element([for item in aci_bridge_domain.aci_bds : item.id if item.name == each.value.bd], 0)
 }
 
 resource "aci_filter" "aci_filters" {
@@ -73,5 +73,5 @@ resource "aci_epg_to_contract" "aci_epg_contract" {
 resource "aci_epg_to_domain" "aci_epg_domain" {
   for_each           = var.epgs
   application_epg_dn = element([for item in aci_application_epg.aci_epgs : item.id if item.name == each.value.name], 0)
-  tdn                = each.value.aciDomain
+  tdn                = each.value.domain
 }
