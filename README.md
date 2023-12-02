@@ -95,22 +95,22 @@ module "aci_tenants" {
   }
 
   vrfs = {
-    vrf0 = { name = "TEST1-VRF" },
-    vrf1 = { name = "TEST2-VRF" }
+    TEST1-VRF = {}
+    TEST2-VRF = {}
   }
 
   bridge_domains = {
-    bd1 = { name = "TEST1-BD", vrf = "TEST1-VRF" },
-    bd2 = { name = "TEST2-BD", vrf = "TEST1-VRF" },
-    bd3 = { name = "TEST3-BD", vrf = "TEST2-VRF" },
-    bd4 = { name = "TEST4-BD", vrf = "TEST2-VRF" }
+    TEST1-BD = { vrf = "TEST1-VRF" }
+    TEST2-BD = { vrf = "TEST1-VRF" }
+    TEST3-BD = { vrf = "TEST2-VRF" }
+    TEST4-BD = { vrf = "TEST2-VRF" }
   }
 
   subnets = {
-    subn1 = { bd = "TEST1-BD", ip = "10.225.3.1/24", scope = ["public"] },
-    subn2 = { bd = "TEST2-BD", ip = "10.225.4.1/24", scope = ["public"] },
-    subn3 = { bd = "TEST3-BD", ip = "10.225.5.1/24", scope = ["public"] },
-    subn4 = { bd = "TEST4-BD", ip = "10.225.6.1/24", scope = ["public"] }
+    TEST1-SN = { bd = "TEST1-BD", ip = "10.225.3.1/24", scope = ["public"] }
+    TEST2-SN = { bd = "TEST2-BD", ip = "10.225.4.1/24", scope = ["public"] }
+    TEST3-SN = { bd = "TEST3-BD", ip = "10.225.5.1/24", scope = ["public"] }
+    TEST4-SN = { bd = "TEST4-BD", ip = "10.225.6.1/24", scope = ["public"] }
   }
 
   app_profiles = {
@@ -118,17 +118,17 @@ module "aci_tenants" {
   }
 
   epgs = {
-    epg1 = { name = "TEST1-EPG", bd = "TEST1-BD", ap = "TEST-AP", domain = "uni/phys-TEST" },
-    epg2 = { name = "TEST2-EPG", bd = "TEST2-BD", ap = "TEST-AP", domain = "uni/phys-TEST" },
-    epg3 = { name = "TEST3-EPG", bd = "TEST3-BD", ap = "TEST-AP", domain = "uni/phys-TEST" },
-    epg4 = { name = "TEST4-EPG", bd = "TEST4-BD", ap = "TEST-AP", domain = "uni/phys-TEST" },
-    epg5 = { name = "TEST5-EPG", bd = "TEST4-BD", ap = "TEST-AP", domain = "uni/phys-TEST" }
+    TEST1-EPG = { bd = "TEST1-BD", ap = "TEST-AP", domain = "uni/phys-TEST" }
+    TEST2-EPG = { bd = "TEST2-BD", ap = "TEST-AP", domain = "uni/phys-TEST" }
+    TEST3-EPG = { bd = "TEST3-BD", ap = "TEST-AP", domain = "uni/phys-TEST" }
+    TEST4-EPG = { bd = "TEST4-BD", ap = "TEST-AP", domain = "uni/phys-TEST" }
+    TEST5-EPG = { bd = "TEST4-BD", ap = "TEST-AP", domain = "uni/phys-TEST" }
   }
 
   filters = {
-    any = { name = "any" },
-    ssh = { name = "ssh" },
-    web = { name = "web" }
+    any = {}
+    ssh = {}
+    web = {}
   }
 
   filter_entries = {
@@ -139,23 +139,23 @@ module "aci_tenants" {
   }
 
   contracts = {
-    any = { name = "any", filter = ["any"] },
-    ssh = { name = "ssh", filter = ["ssh"] },
-    web = { name = "http", filter = ["http", "https"] }
+    any  = { filter = ["any"] }
+    ssh  = { filter = ["ssh"] }
+    http = { filter = ["http", "https"] }
   }
 
   contract_bindings = {
-    test1-epg-prov1 = { epg = "TEST1-EPG", contract_type = "provider", contract = "any" },
-    test2-epg-prov1 = { epg = "TEST2-EPG", contract_type = "provider", contract = "ssh" },
-    test3-epg-prov1 = { epg = "TEST3-EPG", contract_type = "provider", contract = "ssh" },
-    test4-epg-prov1 = { epg = "TEST4-EPG", contract_type = "provider", contract = "ssh" },
-    test5-epg-prov1 = { epg = "TEST5-EPG", contract_type = "provider", contract = "ssh" },
-    test5-epg-prov2 = { epg = "TEST5-EPG", contract_type = "provider", contract = "ssh" },
-    test1-epg-cons1 = { epg = "TEST1-EPG", contract_type = "consumer", contract = "any" },
-    test2-epg-cons1 = { epg = "TEST2-EPG", contract_type = "consumer", contract = "any" },
-    test3-epg-cons1 = { epg = "TEST3-EPG", contract_type = "consumer", contract = "any" },
-    test4-epg-cons1 = { epg = "TEST4-EPG", contract_type = "consumer", contract = "any" },
-    test5-epg-cons1 = { epg = "TEST5-EPG", contract_type = "consumer", contract = "any" }
+    TEST1-EPG-P-1 = { epg = "TEST1-EPG", contract_type = "provider", contract = "any" },
+    TEST2-EPG-P-1 = { epg = "TEST2-EPG", contract_type = "provider", contract = "ssh" },
+    TEST3-EPG-P-1 = { epg = "TEST3-EPG", contract_type = "provider", contract = "ssh" },
+    TEST4-EPG-P-1 = { epg = "TEST4-EPG", contract_type = "provider", contract = "ssh" },
+    TEST5-EPG-P-1 = { epg = "TEST5-EPG", contract_type = "provider", contract = "ssh" },
+    TEST5-EPG-P-2 = { epg = "TEST5-EPG", contract_type = "provider", contract = "ssh" },
+    TEST1-EPG-C-1 = { epg = "TEST1-EPG", contract_type = "consumer", contract = "any" },
+    TEST2-EPG-C-1 = { epg = "TEST2-EPG", contract_type = "consumer", contract = "any" },
+    TEST3-EPG-C-1 = { epg = "TEST3-EPG", contract_type = "consumer", contract = "any" },
+    TEST4-EPG-C-1 = { epg = "TEST4-EPG", contract_type = "consumer", contract = "any" },
+    TEST5-EPG-C-1 = { epg = "TEST5-EPG", contract_type = "consumer", contract = "any" }
   }
 }
 ```
