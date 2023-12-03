@@ -19,6 +19,16 @@ When executing terraform init, the module will install automatically.
 
 ## Usage
 
+Copy and paste into your Terraform configuration, insert the variables, and run terraform init:
+
+```hcl
+module "tenant" {
+  source  = "insobi/tenant/aci"
+  
+  # insert required variables here
+}
+```
+
 ### Example 1
 
 Single tenant deployment
