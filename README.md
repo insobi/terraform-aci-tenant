@@ -1,5 +1,7 @@
 # terraform-aci-tenant
 
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/insobi/terraform-aci-tenant)
+
 Terraform module for deploying Cisco ACI tenants
 
 ```
